@@ -47,7 +47,9 @@ export default function ImagePage() {
       }
     };
 
+    if (tags.length) {
     fetchData();
+    }
   }, [tags]);
 
   const handleDownload = async () => {
@@ -128,7 +130,9 @@ export default function ImagePage() {
         </h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
                 {similarImages && similarImages.map((image,index) => (
-                  <Link to={`/wallpaper/${image.$id}`} key={index}>
+                  <Link to={`/wallpaper/${image.$id}`} key={index} onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}>
                     <div className="relative group ">
                       <img
                         src={image.imageURL}

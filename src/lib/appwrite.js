@@ -20,7 +20,8 @@ async function createTheme(themeData) {
             ID.unique(), // Auto-generate a unique ID
             themeData
         );
-        console.log('Theme Created:', response);
+        // console.log('Theme Created:', response);
+        return response
     } catch (error) {
         console.error('Error creating theme:', error);
     }
@@ -29,7 +30,7 @@ async function createTheme(themeData) {
 async function getThemes () {
     try {
       const response = await databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteThemeId);
-      console.log("Themes fetched:", response.documents);
+      // console.log("Themes fetched:", response.documents);
       return response.documents;
     } catch (error) {
       console.error("Error fetching themes:", error);
@@ -46,7 +47,7 @@ async function getThemeByName(themeName) {
         );
 
         if (response.documents.length > 0) {
-            console.log('Theme Found:', response.documents[0]);
+            // console.log('Theme Found:', response.documents[0]);
             return response.documents[0];
         } else {
             console.log('No theme found with the name:', themeName);
@@ -68,7 +69,8 @@ async function createWall(wallData) {
             wallData
         );
         // Call updateThemeTags with the theme ID and new tags
-        console.log('Wall Created:', response);
+        // console.log('Wall Created:', response);
+        return response
     } catch (error) {
         console.error('Error creating wall:', error);
     }
@@ -83,7 +85,7 @@ async function uploadImage(file) {
             ID.unique(), // Auto-generate a unique file ID
             file // The file to upload
         );
-        console.log('Image Uploaded:', response);
+        // console.log('Image Uploaded:', response);
         return response;
     } catch (error) {
         console.error('Error uploading image:', error);
@@ -96,7 +98,7 @@ function getImageURL(fileId) {
         //store preview url to load faster
         const imageURL = storage.getFilePreview(conf.appwriteBucketId, fileId);
 
-        console.log('Image URL:', imageURL);
+        // console.log('Image URL:', imageURL);
 
         return imageURL;
     } catch (error) {
@@ -107,7 +109,7 @@ function getImageURL(fileId) {
 async function downloadImage (fileId) {
     try {
       const downloadURL = storage.getFileDownload(conf.appwriteBucketId, fileId); // Replace with your storage bucket ID
-      console.log("Generated download URL:", downloadURL);
+      // console.log("Generated download URL:", downloadURL);
       return downloadURL;
     } catch (error) {
       console.error("Error generating download URL:", error);
@@ -174,7 +176,7 @@ async function getTopRecentWalls () {
           Query.limit(3),               // Limit the result to 3 documents
         ]
       );
-      console.log("Top 3 recent walls:", response.documents);
+      // console.log("Top 3 recent walls:", response.documents);
       return response.documents;
     } catch (error) {
       console.error("Error fetching top recent walls:", error);

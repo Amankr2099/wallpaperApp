@@ -10,7 +10,7 @@ export default function Carousel() {
     const fetchData = async () => {
       try {
         const response = await getTopRecentWalls();
-        console.log(response);
+        // console.log(response);
         
         setImages(response);
       } catch (error) {

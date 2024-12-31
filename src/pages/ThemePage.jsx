@@ -157,7 +157,9 @@ const ThemePage = () => {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
         {filteredImages.map((image) => (
-          <Link key={image.id} to={`/wallpaper/${image.$id}`}>
+          <Link key={image.id} to={`/wallpaper/${image.$id}`} onClick={() => {
+            window.scrollTo(0, 0);
+          }}>
             <div className="relative group ">
               <img
                 src={image.imageURL}

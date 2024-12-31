@@ -35,9 +35,11 @@ export default function Themes() {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
         {themes.map((theme, index) => (
-          <Link key={index} to={`/themes/${theme.theme}`} className="relative z-10">
+          <Link key={index} to={`/themes/${theme.theme}`} className="relative z-10" onClick={() => {
+            window.scrollTo(0, 0);
+          }}>
             <div className="relative group cursor-pointer">
-              <div className="w-full h-40 overflow-hidden rounded-lg shadow-md relative">
+              <div className="w-full h-40 overflow-hidden rounded-lg shadow-md relative" >
                 <img
                   src={theme.thumbnail}
                   alt={theme.theme}
